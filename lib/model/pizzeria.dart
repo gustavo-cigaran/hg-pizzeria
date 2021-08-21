@@ -3,7 +3,7 @@ import 'dart:js_util';
 class Pizzeria{
     int? id;
     String? flavor;
-    double? value;
+    int? value;
     String? description;
 
     Pizzeria({this.id, this.flavor, this.value, this.description});
