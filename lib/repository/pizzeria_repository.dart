@@ -77,4 +77,9 @@ class PizzeriaRepository {
     );
   }
 
+  Future<int?> getSize() async{
+    final Database database = await initializeDB();
+    return Sqflite.firstIntValue(await database.rawQuery("select count(*) from $pizzeriaTable"));
+  }
+
 }
