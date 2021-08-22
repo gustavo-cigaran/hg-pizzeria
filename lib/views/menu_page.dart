@@ -14,16 +14,22 @@ class _MenuPageState extends State<MenuPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('sla'),
+        title: Text('Cardápio'),
+        centerTitle: true,
       ),
       backgroundColor: Colors.white,
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('images/background.jpg'),
+            fit: BoxFit.cover,
+          ),
+        ),
+        child: ListView(
           children: <Widget>[
             Container(
-              padding: const EdgeInsets.all(20.0),
-              height: 600,
+              padding: const EdgeInsets.all(10.0),
+              height: 500,
               width: 300,
               child: GridView.count(
                 crossAxisSpacing: 20,
@@ -32,47 +38,34 @@ class _MenuPageState extends State<MenuPage> {
                 childAspectRatio: 4 / 2,
                 children: [
                   FlipCard(
-                    direction: FlipDirection.HORIZONTAL, // default
+                    direction: FlipDirection.HORIZONTAL,
                     front: Container(
                       child: Text('Front'),
-                      color: Colors.green,
                       alignment: Alignment.center,
+                      color: Colors.yellow,
                     ),
                     back: Container(
                       child: Text('Back'),
                       color: Colors.green,
-                      width: 100,
-                      height: 50,
                     ),
                   ),
                   FlipCard(
-                    direction: FlipDirection.HORIZONTAL, // default
+                    direction: FlipDirection.HORIZONTAL,
                     front: Container(
-                      child: Text('Front'),
-                      color: Colors.green,
-                      width: 100,
-                      height: 50,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.all(Radius.circular(15.0)),
+                      ),
+                      child: Image.asset('images/pizza-calabresa.jpg', fit: BoxFit.fill,),
                     ),
                     back: Container(
-                      child: Text('Back'),
-                      color: Colors.green,
-                      width: 100,
-                      height: 50,
-                    ),
-                  ),
-                  FlipCard(
-                    direction: FlipDirection.HORIZONTAL, // default
-                    front: Container(
-                      child: Text('Front'),
-                      color: Colors.green,
-                      width: 100,
-                      height: 50,
-                    ),
-                    back: Container(
-                      child: Text('Back'),
-                      color: Colors.green,
-                      width: 100,
-                      height: 50,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.all(Radius.circular(15.0)),
+                      ),
+                      child: Text(
+                        'Calabresa',
+                        style: TextStyle(color: Colors.yellow),
+                      ),
+                      alignment: Alignment.center,
                     ),
                   ),
                 ],
