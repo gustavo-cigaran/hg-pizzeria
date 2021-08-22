@@ -1,5 +1,6 @@
 import 'package:flip_card/flip_card.dart';
 import 'package:flutter/material.dart';
+import 'package:projeto_final/repository/repository.dart';
 import 'views.dart';
 
 class MenuPage extends StatefulWidget {
@@ -10,6 +11,16 @@ class MenuPage extends StatefulWidget {
 }
 
 class _MenuPageState extends State<MenuPage> {
+
+  late PizzeriaRepository _repository;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    this._repository = PizzeriaRepository();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -73,6 +84,20 @@ class _MenuPageState extends State<MenuPage> {
             ),
           ],
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () async {
+          final reloadPage = await Navigator.push(
+              context,
+              MaterialPageRoute(builder: (BuildContext context) => ViewsPizzeriaOrder())
+          );
+
+          if(reloadPage){
+            setState(() {
+            });
+          }
+        },
+        child: const Icon(Icons.add),
       ),
     );
   }
