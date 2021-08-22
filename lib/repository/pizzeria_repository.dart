@@ -7,6 +7,7 @@ class PizzeriaRepository {
   final String pizzeriaTable = "pizzeria_table";
   final String idColumn = "id_Column";
   final String flavorColumn = "flavor_Column";
+  final String tableColumn = "table_Column";
   final String valueColumn = "value_Column";
   final String descriptionColumn = "description_Column";
 
@@ -17,7 +18,7 @@ class PizzeriaRepository {
     return openDatabase(path, version: 1,
       onCreate: (Database database, int newerVersion) async {
         await database.execute(
-            "CREATE TABLE $pizzeriaTable($idColumn INTEGER PRIMARY KEY, $flavorColumn TEXT, $valueColumn TEXT, $descriptionColumn TEXT"
+            "CREATE TABLE $pizzeriaTable($idColumn INTEGER PRIMARY KEY, $flavorColumn TEXT, $tableColumn TEXT, $valueColumn TEXT, $descriptionColumn TEXT"
         );
       },
     );
@@ -41,7 +42,7 @@ class PizzeriaRepository {
     final Database database = await initializeDB();
     final List<Map<String, Object?>> query = await database.query(
         this.pizzeriaTable,
-        columns: [idColumn, flavorColumn, valueColumn, descriptionColumn]);
+        columns: [idColumn, flavorColumn, tableColumn, valueColumn, descriptionColumn]);
     return query.map((element) => Pizzeria.fromMap(element)).toList();
   }
 
@@ -50,7 +51,7 @@ class PizzeriaRepository {
     final Database database = await initializeDB();
     List<Map> maps = await database.query(
         pizzeriaTable,
-        columns: [idColumn, flavorColumn, valueColumn, descriptionColumn],
+        columns: [idColumn, flavorColumn, tableColumn, valueColumn, descriptionColumn],
         where: "$idColumn = ?",
         whereArgs: [id]
     );
