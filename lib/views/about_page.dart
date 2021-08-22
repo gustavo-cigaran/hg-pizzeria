@@ -25,7 +25,7 @@ class _AboutPageState extends State<AboutPage> {
             _rowImages(),
             SizedBox(height: 20.0,),
             Container(
-              width: 400,
+              width: 420,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
