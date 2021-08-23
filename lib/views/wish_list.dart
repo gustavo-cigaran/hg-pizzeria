@@ -6,7 +6,6 @@ import 'package:projeto_final/model/model.dart';
 class WishList extends StatefulWidget {
   const WishList({Key? key}) : super(key: key);
 
-
   @override
   _WishListState createState() => _WishListState();
 }
@@ -19,15 +18,15 @@ class _WishListState extends State<WishList> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    this._repository = PizzeriaRepository();
+    _repository = PizzeriaRepository();
   }
 
-  _messege(){
+  _message(){
      return Center(child: Text('alo salve salve'),);
   }
 
   _progress(){
-    return const Center(child: CircularProgressIndicator() ,);
+    return const Center(child: CircularProgressIndicator());
   }
 
   _title(Pizzeria pizzeria){
@@ -37,7 +36,7 @@ class _WishListState extends State<WishList> {
           children: [
             Padding(
               padding: const EdgeInsets.only(left: 10.0),
-              child: Text("Codigo ${pizzeria.id} - ${pizzeria.flavor} - ${pizzeria.table}"),
+              child: Text("Código ${pizzeria.id} - ${pizzeria.flavor} - ${pizzeria.table}"),
             )
           ],
         )
@@ -53,7 +52,7 @@ class _WishListState extends State<WishList> {
           const Icon(Icons.food_bank),
           Text(pizzeria.flavor.toString()),
           const Icon(Icons.tablet),
-          Text(pizzeria.table.toString())
+          Text(pizzeria.table.toString()),
         ],
       ),
     );
@@ -69,38 +68,38 @@ class _WishListState extends State<WishList> {
         ),
         trailing: GestureDetector(
           onTap: () {
-            print("clicou pra excluir");
+            print("clicou para excluir");
           },
           child: const Icon(Icons.delete),
         ),
         onTap: () {
-          print("voce escolhea a morete ${pizzeria.toString()}");
+          print("Você escolheu ${pizzeria.toString()}");
         },
       ),
     );
   }
 
-  _listPizzeria(BuildContext context, List<Pizzeria>? pizzeria){
+  _listPizzerias(BuildContext context, List<Pizzeria>? pizzerias){
     return ListView.separated(
         separatorBuilder: (BuildContext context, int index) => const Divider(),
-        itemCount: pizzeria!.length,
+        itemCount: pizzerias!.length,
         itemBuilder: (context, index){
          return Dismissible(
            direction: DismissDirection.endToStart,
            background: Container(
-             color: Colors.amber,
+             color: Colors.red,
              alignment: Alignment.centerRight,
              padding: const EdgeInsets.symmetric(horizontal: 10.0),
              child: const Icon(Icons.delete_forever),
            ),
-           key: ValueKey<int>(pizzeria.elementAt(index).id as int),
-           onDismissed:  (DismissDirection direction) async{
-             await _repository.delete(pizzeria.elementAt(index).id!);
+           key: ValueKey<int>(pizzerias.elementAt(index).id!),
+           onDismissed:  (DismissDirection direction) async {
+             await _repository.delete(pizzerias.elementAt(index).id!);
              setState(() {
 
              });
            },
-           child: _card(context, pizzeria.elementAt(index)),
+           child: _card(context, pizzerias.elementAt(index)),
          );
       }
     );
@@ -109,17 +108,23 @@ class _WishListState extends State<WishList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text('Lista de Pedidos'),
+        centerTitle: true,
+        backgroundColor: Colors.yellow,
+      ),
       body: FutureBuilder(
         future: _repository.fetchAll(),
         builder: (BuildContext context, AsyncSnapshot<List<Pizzeria>> snapshot) {
           if(snapshot.hasData){
             if(snapshot.data!.isEmpty) {
-              return _messege();
+              return _message();
             }
-            List<Pizzeria>? pizzeria = snapshot.data;
-            return _listPizzeria(context, pizzeria);
-          } else
-          {
+            List<Pizzeria>? pizzerias = snapshot.data;
+            print('${pizzerias.toString()}');
+
+            return _listPizzerias(context, pizzerias);
+          } else {
             return _progress();
           }
         },

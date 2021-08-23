@@ -5,11 +5,11 @@ import 'package:projeto_final/model/model.dart';
 class PizzeriaRepository {
 
   final String pizzeriaTable = "pizzeria_table";
-  final String idColumn = "id_Column";
-  final String flavorColumn = "flavor_Column";
-  final String tableColumn = "table_Column";
-  final String valueColumn = "value_Column";
-  final String descriptionColumn = "description_Column";
+  final String idColumn = "id_column";
+  final String flavorColumn = "flavor_column";
+  final String tableColumn = "table_column";
+  final String valueColumn = "value_column";
+  final String descriptionColumn = "description_column";
 
   Future<Database> initializeDB() async {
     final databasePath = await getDatabasesPath();
@@ -26,14 +26,14 @@ class PizzeriaRepository {
 
   Future<int> save(Pizzeria pizzeria) async {
     final Database database = await initializeDB();
-    return await database.insert(this.pizzeriaTable, pizzeria.toMap());
+    return await database.insert(pizzeriaTable, pizzeria.toMap());
   }
 
-  Future<int> saveAll(List<Pizzeria> pizzeria) async {
+  Future<int> saveAll(List<Pizzeria> pizzerias) async {
     int result = 0;
     final Database database = await initializeDB();
-    for (var pizzeria in pizzeria) {
-      result = await database.insert(this.pizzeriaTable, pizzeria.toMap());
+    for(var pizzeria in pizzerias) {
+      result = await database.insert(pizzeriaTable, pizzeria.toMap());
     }
     return result;
   }
@@ -56,19 +56,23 @@ class PizzeriaRepository {
         whereArgs: [id]
     );
 
-    if (maps.length > 0)
+    if (maps.isNotEmpty) {
       return Pizzeria.fromMap(maps.first);
-    else
+    } else {
       return null;
+    }
   }
 
-  Future<int> delete(int id)async{
+  Future<int> delete(int id) async {
     final Database database = await initializeDB();
-    return await database.delete(pizzeriaTable,where: "$idColumn = ?",
-    whereArgs: [id]
+    return await database.delete(
+        pizzeriaTable,
+        where: "$idColumn = ?",
+        whereArgs: [id]
     );
   }
-  Future<int> uptade(Pizzeria pizzeria)async{
+
+  Future<int> update(Pizzeria pizzeria) async {
     final Database database = await initializeDB();
     return await database.update(
         pizzeriaTable,
@@ -78,7 +82,7 @@ class PizzeriaRepository {
     );
   }
 
-  Future<int?> getSize() async{
+  Future<int?> getSize() async {
     final Database database = await initializeDB();
     return Sqflite.firstIntValue(await database.rawQuery("select count(*) from $pizzeriaTable"));
   }

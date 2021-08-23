@@ -51,17 +51,11 @@ class _MenuPageState extends State<MenuPage> {
                   FlipCard(
                     direction: FlipDirection.HORIZONTAL,
                     front: Container(
-                      // decoration: BoxDecoration(
-                      //   borderRadius: BorderRadius.all(Radius.circular(15.0)),
-                      // ),
-                      child: Text('Foto de Pizza'),
-                      alignment: Alignment.center,
-                      color: Colors.yellow,
-                      // Image.asset('images/pizza-calabresa.jpg', fit: BoxFit.fill,),
+                      child: Image.asset('images/pizza_calabresa.jpg', fit: BoxFit.fill),
                     ),
                     back: Container(
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.all(Radius.circular(15.0)),
+                        border: Border.all(color: Colors.yellow),
                       ),
                       child: Text(
                         'Calabresa',
@@ -73,17 +67,11 @@ class _MenuPageState extends State<MenuPage> {
                   FlipCard(
                     direction: FlipDirection.HORIZONTAL,
                     front: Container(
-                      // decoration: BoxDecoration(
-                      //   borderRadius: BorderRadius.all(Radius.circular(15.0)),
-                      // ),
-                      child: Text('Foto de Pizza'),
-                      alignment: Alignment.center,
-                      color: Colors.yellow,
-                      // Image.asset('images/pizza-mussarela.jpg', fit: BoxFit.fill,),
+                      child: Image.asset('images/pizza_mussarela.jpg', fit: BoxFit.fill,),
                     ),
                     back: Container(
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.all(Radius.circular(15.0)),
+                        border: Border.all(color: Colors.yellow),
                       ),
                       child: Text(
                         'Mussarela',
@@ -95,20 +83,14 @@ class _MenuPageState extends State<MenuPage> {
                   FlipCard(
                     direction: FlipDirection.HORIZONTAL,
                     front: Container(
-                      // decoration: BoxDecoration(
-                      //   borderRadius: BorderRadius.all(Radius.circular(15.0)),
-                      // ),
-                      child: Text('Foto de Pizza'),
-                      alignment: Alignment.center,
-                      color: Colors.yellow,
-                      // Image.asset('images/pizza-calabresa.jpg', fit: BoxFit.fill,),
+                      child: Image.asset('images/pizza_frango.jpg', fit: BoxFit.fill,),
                     ),
                     back: Container(
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.all(Radius.circular(15.0)),
+                        border: Border.all(color: Colors.yellow),
                       ),
                       child: Text(
-                        'Calabresa',
+                        'Frango',
                         style: TextStyle(color: Colors.yellow),
                       ),
                       alignment: Alignment.center,
@@ -117,20 +99,14 @@ class _MenuPageState extends State<MenuPage> {
                   FlipCard(
                     direction: FlipDirection.HORIZONTAL,
                     front: Container(
-                      // decoration: BoxDecoration(
-                      //   borderRadius: BorderRadius.all(Radius.circular(15.0)),
-                      // ),
-                      child: Text('Foto de Pizza'),
-                      alignment: Alignment.center,
-                      color: Colors.yellow,
-                      // Image.asset('images/pizza-calabresa.jpg', fit: BoxFit.fill,),
+                      child: Image.asset('images/pizza_carne.jpg', fit: BoxFit.fill,),
                     ),
                     back: Container(
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.all(Radius.circular(15.0)),
+                        border: Border.all(color: Colors.yellow),
                       ),
                       child: Text(
-                        'Calabresa',
+                        'Carne',
                         style: TextStyle(color: Colors.yellow),
                       ),
                       alignment: Alignment.center,
@@ -139,20 +115,14 @@ class _MenuPageState extends State<MenuPage> {
                   FlipCard(
                     direction: FlipDirection.HORIZONTAL,
                     front: Container(
-                      // decoration: BoxDecoration(
-                      //   borderRadius: BorderRadius.all(Radius.circular(15.0)),
-                      // ),
-                      child: Text('Foto de Pizza'),
-                      alignment: Alignment.center,
-                      color: Colors.yellow,
-                      // Image.asset('images/pizza-calabresa.jpg', fit: BoxFit.fill,),
+                      child: Image.asset('images/pizza_coracao.png', fit: BoxFit.fill,),
                     ),
                     back: Container(
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.all(Radius.circular(15.0)),
+                        border: Border.all(color: Colors.yellow),
                       ),
                       child: Text(
-                        'Calabresa',
+                        'Coração',
                         style: TextStyle(color: Colors.yellow),
                       ),
                       alignment: Alignment.center,
@@ -161,64 +131,14 @@ class _MenuPageState extends State<MenuPage> {
                   FlipCard(
                     direction: FlipDirection.HORIZONTAL,
                     front: Container(
-                      // decoration: BoxDecoration(
-                      //   borderRadius: BorderRadius.all(Radius.circular(15.0)),
-                      // ),
-                      child: Text('Foto de Pizza'),
-                      alignment: Alignment.center,
-                      color: Colors.yellow,
-                      // Image.asset('images/pizza-calabresa.jpg', fit: BoxFit.fill,),
+                      child: Image.asset('images/pizza_cinco_queijos.jpg', fit: BoxFit.fill,),
                     ),
                     back: Container(
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.all(Radius.circular(15.0)),
+                        border: Border.all(color: Colors.yellow),
                       ),
                       child: Text(
-                        'Calabresa',
-                        style: TextStyle(color: Colors.yellow),
-                      ),
-                      alignment: Alignment.center,
-                    ),
-                  ),
-                  FlipCard(
-                    direction: FlipDirection.HORIZONTAL,
-                    front: Container(
-                      // decoration: BoxDecoration(
-                      //   borderRadius: BorderRadius.all(Radius.circular(15.0)),
-                      // ),
-                      child: Text('Foto de Pizza'),
-                      alignment: Alignment.center,
-                      color: Colors.yellow,
-                      // Image.asset('images/pizza-calabresa.jpg', fit: BoxFit.fill,),
-                    ),
-                    back: Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.all(Radius.circular(15.0)),
-                      ),
-                      child: Text(
-                        'Calabresa',
-                        style: TextStyle(color: Colors.yellow),
-                      ),
-                      alignment: Alignment.center,
-                    ),
-                  ),
-                  FlipCard(
-                    direction: FlipDirection.HORIZONTAL,
-                    front: Container(
-                      // decoration: BoxDecoration(
-                      //   borderRadius: BorderRadius.all(Radius.circular(15.0)),
-                      // ),
-                      child: Text('Foto de Pizza'),
-                      alignment: Alignment.center,
-                      color: Colors.yellow,
-                      // Image.asset('images/pizza-calabresa.jpg', fit: BoxFit.fill,),
-                    ),
-                    back: Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.all(Radius.circular(15.0)),
-                      ),
-                      child: Text(
-                        'Calabresa',
+                        '5 Queijos',
                         style: TextStyle(color: Colors.yellow),
                       ),
                       alignment: Alignment.center,

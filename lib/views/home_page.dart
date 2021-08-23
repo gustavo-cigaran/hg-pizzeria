@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:projeto_final/model/model.dart';
 import 'package:projeto_final/repository/repository.dart';
 import 'views.dart';
 
@@ -26,17 +25,13 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
       backgroundColor: Colors.white,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            // Image.asset('images/logo_home.gif', width: 300, height: 300,),
-            Text('AQUI VAI A LOGO'),
-            SizedBox(height: 80,),
+            Image.asset('images/logo.png'),
+            SizedBox(height: 50,),
             TextButton.icon(
               style: TextButton.styleFrom(
                 primary: Colors.black,
@@ -69,15 +64,16 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               onPressed: () {
                 Navigator.push(context,MaterialPageRoute(
-                  builder: (context)=>AboutPage(),
+                  builder: (context)=>WishList(),
                 ));
               },
               icon: Icon(
-                Icons.info_outlined,
+                Icons.list_alt,
                 color: Colors.black,
               ),
-              label: Text('Sobre'),
+              label: Text('Lista de pedidos'),
             ),
+            SizedBox(height: 10,),
             TextButton.icon(
               style: TextButton.styleFrom(
                 primary: Colors.black,
@@ -89,14 +85,14 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               onPressed: () {
                 Navigator.push(context,MaterialPageRoute(
-                  builder: (context)=>WishList(),
+                  builder: (context)=>AboutPage(),
                 ));
               },
               icon: Icon(
-                Icons.list_alt,
+                Icons.info_outlined,
                 color: Colors.black,
               ),
-              label: Text('Lista de pedidos'),
+              label: Text('Sobre'),
             ),
           ],
         ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:projeto_final/model/model.dart';
 import 'package:projeto_final/repository/repository.dart';
+import 'package:projeto_final/views/views.dart';
 
 class ViewsPizzeriaOrder extends StatefulWidget {
   const ViewsPizzeriaOrder({Key? key}) : super(key: key);
@@ -11,15 +12,15 @@ class ViewsPizzeriaOrder extends StatefulWidget {
 
 class _ViewsPizzeriaOrderState extends State<ViewsPizzeriaOrder> {
 
-  late PizzeriaRepository _repository;
+  late PizzeriaRepository _repository = PizzeriaRepository();
 
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   TextEditingController _tableController = TextEditingController();
   TextEditingController _valueController = TextEditingController();
   TextEditingController _descriptionController = TextEditingController();
 
-  var _flavor = ['Selecione o Sabor da pizza', 'calabresa', 'frango', 'carne', 'coraçãozinho', '4 quijos', '5 queijos'];
-  var _flavorSelected = "Selecione o Sabor da pizza";
+  var _flavor = ['Selecione o Sabor da Pizza', 'Calabresa', 'Mussarela', 'Frango', 'Carne', 'Coraçãozinho', '5 queijos'];
+  var _flavorSelected = "Selecione o Sabor da Pizza";
 
   _formUI(BuildContext context){
     return Column(
@@ -48,7 +49,7 @@ class _ViewsPizzeriaOrderState extends State<ViewsPizzeriaOrder> {
             child: Text(value),
           );
         }).toList(),
-          hint: const Text("selecione o sabor"),
+          hint: const Text("Selecione o sabor"),
       onChanged: (newValue){
           setState(() {
             _flavorSelected = newValue!;
@@ -62,7 +63,7 @@ class _ViewsPizzeriaOrderState extends State<ViewsPizzeriaOrder> {
       controller: _tableController,
       keyboardType: TextInputType.number,
       decoration: InputDecoration(
-        hintText: "Digite o numero da mesa",
+        hintText: "Digite o número da mesa",
       ),
       maxLength: 2,
       validator: (value) {
@@ -95,7 +96,7 @@ class _ViewsPizzeriaOrderState extends State<ViewsPizzeriaOrder> {
     return TextFormField(
       controller: _descriptionController,
       keyboardType: TextInputType.text,
-      decoration: const InputDecoration(hintText: "descrição da pizza"),
+      decoration: const InputDecoration(hintText: "Descrição da pizza"),
       maxLength: 40,
       validator: (value) {
         if(value!.isEmpty) {
@@ -110,7 +111,7 @@ class _ViewsPizzeriaOrderState extends State<ViewsPizzeriaOrder> {
     return TextButton.icon(
         onPressed: () {
           _register(context);
-          _resetFild();
+          _resetFields();
         },
       style: TextButton.styleFrom(
         primary: Colors.amber,
@@ -133,7 +134,8 @@ class _ViewsPizzeriaOrderState extends State<ViewsPizzeriaOrder> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('fazer pedido'),
+        title: Text('Fazer Pedido'),
+        centerTitle: true,
       ),
       body: SingleChildScrollView(
         child: Form(
@@ -145,11 +147,11 @@ class _ViewsPizzeriaOrderState extends State<ViewsPizzeriaOrder> {
     );
   }
 
-  _register(BuildContext contex){
+  _register(BuildContext context){
     if(_formKey.currentState!.validate()) {
       if(_flavorSelected == 'Selecione o Sabor da pizza'){
-        ScaffoldMessenger.of(contex).showSnackBar(
-          SnackBar(content: Text('Escolha uma pizza'),)
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Escolha uma pizza'),)
         );
       } else {
 
@@ -157,19 +159,20 @@ class _ViewsPizzeriaOrderState extends State<ViewsPizzeriaOrder> {
           flavor: _flavorSelected,
           table: _tableController.hashCode,
           value: _valueController.hashCode,
-          description: _descriptionController.text,);
+          description: _descriptionController.text);
 
         _repository.save(pizzeria);
         setState(() {
-          Navigator.pop(context, true);
+          Navigator.push(context,MaterialPageRoute(
+              builder: (context)=>WishList()));
         });
       }
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Digite os campos corretamentes'),)
+        const SnackBar(content: Text('Digite os campos corretamente'),)
       );
     }
   }
 
-  _resetFild() => _formKey.currentState!.reset();
+  _resetFields() => _formKey.currentState!.reset();
 }

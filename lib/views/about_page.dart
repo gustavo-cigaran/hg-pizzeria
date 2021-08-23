@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'views.dart';
 
 class AboutPage extends StatefulWidget {
   AboutPage({Key? key}) : super(key: key);
@@ -49,11 +48,8 @@ class _AboutPageState extends State<AboutPage> {
                   const Text.rich(
                     TextSpan(
                       children: <TextSpan>[
-                        TextSpan(text: 'Feedback: ', style: TextStyle(fontWeight: FontWeight.bold)),
-                        TextSpan(text: 'Essa disciplina está sendo bastante interessante pois o Flutter '
-                            'é atualmente um dos principais frameworks para desenvolvimento de aplicações mobile e com isso '
-                            'só o fato de ser um dos mais utilizados no mercado, ja consegue dar a entender que se o cara curte '
-                            'mobile talvez seja uma obrigação saber "mexer" com Flutter ksksksks.'),
+                        TextSpan(text: 'Quem são: ', style: TextStyle(fontWeight: FontWeight.bold)),
+                        TextSpan(text: 'Simplesmente os Dinossauros da QI'),
                       ],
                     ),
                   ),
