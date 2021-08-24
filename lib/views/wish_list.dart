@@ -22,7 +22,7 @@ class _WishListState extends State<WishList> {
   }
 
   _message(){
-     return Center(child: Text('alo salve salve'),);
+     return Center(child: Text('Não tem nem um pedido na fila'),);
   }
 
   _progress(){

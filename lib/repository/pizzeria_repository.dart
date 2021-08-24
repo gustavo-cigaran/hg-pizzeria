@@ -4,7 +4,9 @@ import 'package:projeto_final/model/model.dart';
 
 class PizzeriaRepository {
 
-  final String pizzeriaTable = "pizzeria_table";
+  final String pizzeriaSQL = "pizzeria";
+
+  final String pizzeriaTable = "pizzeriaTable";
   final String idColumn = "id_column";
   final String flavorColumn = "flavor_column";
   final String tableColumn = "table_column";
@@ -18,7 +20,7 @@ class PizzeriaRepository {
     return openDatabase(path, version: 1,
       onCreate: (Database database, int newerVersion) async {
         await database.execute(
-            "CREATE TABLE $pizzeriaTable($idColumn INTEGER PRIMARY KEY, $flavorColumn TEXT, $tableColumn TEXT, $valueColumn TEXT, $descriptionColumn TEXT"
+            "CREATE DATABASE $pizzeriaSQL; USE $pizzeriaSQL; CREATE TABLE $pizzeriaTable($idColumn INTEGER PRIMARY KEY,$flavorColumn varchar(40),$tableColumn INT(2),$valueColumn int(2),$descriptionColumn varchar(40))"
         );
       },
     );
