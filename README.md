@@ -1,6 +1,6 @@
 # projeto_final
 
-A new Flutter project.
+Projeto Final da disciplina de Desenvolvimento de Aplicativos II, do Curso Técnico em Informatica para Internet.
 
 ## Getting Started
 
